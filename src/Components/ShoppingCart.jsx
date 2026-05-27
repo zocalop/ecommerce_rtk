@@ -11,6 +11,15 @@ const ShoppingCart = () => {
   const handleRemoveItem = itemId => {
     dispatch(removeItemFromCart(itemId));
   };
+    const handleClearCart = () => {
+      dispatch(clearCart());
+    };
+    const handleIncreaseQuantity = itemId => {
+      dispatch(increaseItemQuantity(itemId));
+    };
+    const handleDecreaseQuantity = itemId => {
+      dispatch(decreaseItemQuantity(itemId));
+    };
     
 
   return (
@@ -18,11 +27,21 @@ const ShoppingCart = () => {
     <div className="shopping-cart">
       <h2 className="shopping-cart-title">Shopping Cart</h2>
       <ul className="cart-items">
-       
+        {cartItems.map(item => (
+          <li key={item.id} className="cart-item">
+            <span>{item.name} - ${item.price}</span>
+            <div className="quantity-controls">
+              <button onClick={() => handleDecreaseQuantity(itemId)}>->/button>
+              <span> {item.quantity}</span>
+              <button onClick={() => handleIncreaseQuantity(itemId)}>+</button>
+            </div>
+            <button className="remove-item-btn" onClick={() => handleRemoveItem(itemId)}>Remove</button> 
+          </li>
+        ))}      
       </ul>
-      <button className="clear-cart-btn">Clear Cart</button>
+      <button className="clear-cart-btn" onClick={() => handleClearCart()}>Clear Cart</button>
+        <div>{totalAmount ? <div>'The total amount is {totalAmount}</div> : ''}</div>
     </div>
-  
     </>
   );
 };
