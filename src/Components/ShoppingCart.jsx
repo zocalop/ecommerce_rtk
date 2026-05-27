@@ -31,16 +31,16 @@ const ShoppingCart = () => {
           <li key={item.id} className="cart-item">
             <span>{item.name} - ${item.price}</span>
             <div className="quantity-controls">
-              <button onClick={() => handleDecreaseQuantity(itemId)}>->/button>
-              <span> {item.quantity}</span>
-              <button onClick={() => handleIncreaseQuantity(itemId)}>+</button>
-            </div>
-            <button className="remove-item-btn" onClick={() => handleRemoveItem(itemId)}>Remove</button> 
+              <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+              <span> {item.quantity} </span>
+              <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+            </div>     
+            <button className="remove-item-btn" onClick={() => handleRemoveItem(item.id)}>Remove</button> 
           </li>
         ))}      
       </ul>
       <button className="clear-cart-btn" onClick={() => handleClearCart()}>Clear Cart</button>
-        <div>{totalAmount ? <div>'The total amount is {totalAmount}</div> : ''}</div>
+        <div>{totalAmount ? <div>The total amount is {totalAmount}</div> : ''}</div>
     </div>
     </>
   );
