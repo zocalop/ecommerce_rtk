@@ -3,6 +3,8 @@ import React from 'react';
 import ProductList from './Components/ProductList';
 import ShoppingCart from './Components/ShoppingCart';
 import './App.css'
+import SuperCoins from './Components/SuperCoin.jsx';
+
 const App = () => {
   return (
  

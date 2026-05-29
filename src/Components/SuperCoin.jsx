@@ -2,6 +2,8 @@
 import { useState, useSelector, useEffect } from 'react';
 
 const [superCoins, setSuperCoins] = useState(0);
+
+const SuperCoins = () => {
 const cartItems = useSelector(state => state.cart.cartItems);
 const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
@@ -16,3 +18,13 @@ useEffect(() => {
     setSuperCoins(0);
   }
 }, [totalAmount]);
+
+return (
+  <div className="super-coins" style={{textAlign:'center'}}>
+    <h2 className="sper-coins-title">Super Coins</h2>
+    <p className="super-coins-info">You will earn {superCoins} super coins with this purchase.</p>
+  </div>
+  )
+};
+
+export default SuperCoins;
